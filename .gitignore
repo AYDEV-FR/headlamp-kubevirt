@@ -1,0 +1,21 @@
+# OS
+.DS_Store
+Thumbnails
+
+# IDE
+.vscode/
+.idea
+*.xml
+*.iml
+
+# Node
+node_modules/
+
+# Build
+dist/
+*.tgz
+
+# Env
+.env
+*.log
+*.backup

@@ -1,0 +1,18 @@
+initContainers:
+  - name: headlamp-kubevirt
+    image: registry.mehben.fr:5000/headlamp-kubevirt:v2
+    imagePullPolicy: Always
+    command: ["/bin/sh", "-c"]
+    args:
+      - "cp -r /plugins/headlamp-kubevirt /headlamp-plugins/"
+    volumeMounts:
+      - name: headlamp-plugins
+        mountPath: /headlamp-plugins
+
+volumeMounts:
+  - name: headlamp-plugins
+    mountPath: /headlamp/plugins
+
+volumes:
+  - name: headlamp-plugins
+    emptyDir: {}

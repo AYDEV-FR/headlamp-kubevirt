@@ -1,0 +1,49 @@
+version: 1.0.0
+name: headlamp-kubevirt
+displayName: KubeVirt
+createdAt: "2025-03-23T00:00:00Z"
+description: A comprehensive Headlamp plugin for managing KubeVirt virtual machines in Kubernetes
+license: Apache-2.0
+homeURL: https://github.com/mehben/headlamp-kubevirt
+containsSecurityUpdates: false
+operator: false
+prerelease: false
+keywords:
+  - headlamp
+  - kubevirt
+  - kubernetes
+  - virtualization
+  - virtual-machine
+  - vnc
+links:
+  - name: GitHub
+    url: https://github.com/mehben/headlamp-kubevirt
+install: |
+  ## Desktop Installation
+
+  Download the latest release tarball and extract to your Headlamp plugins directory:
+
+  ```bash
+  mkdir -p ~/.config/Headlamp/plugins/headlamp-kubevirt
+  tar -xzf headlamp-kubevirt-*.tar.gz -C ~/.config/Headlamp/plugins/headlamp-kubevirt
+  ```
+
+  ## In-Cluster Installation
+
+  Add as an init container to your Headlamp deployment:
+
+  ```yaml
+  initContainers:
+    - name: headlamp-kubevirt
+      image: ghcr.io/mehben/headlamp-kubevirt:latest
+      command: ["/bin/sh", "-c"]
+      args: ["cp -r /plugins/headlamp-kubevirt /headlamp-plugins/"]
+      volumeMounts:
+        - name: headlamp-plugins
+          mountPath: /headlamp-plugins
+  ```
+annotations:
+  headlamp/plugin/archive-url: https://github.com/mehben/headlamp-kubevirt/releases/download/v1.0.0/headlamp-kubevirt-1.0.0.tar.gz
+  headlamp/plugin/archive-checksum: "SHA256:"
+  headlamp/plugin/version-compat: ">=0.24.0"
+  headlamp/plugin/distro-compat: in-cluster,desktop,docker-desktop,web
