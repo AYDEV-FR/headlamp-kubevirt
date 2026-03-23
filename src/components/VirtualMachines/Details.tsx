@@ -786,6 +786,7 @@ export default function VirtualMachineDetails(props: VirtualMachineDetailsProps)
           initialResource={vmItem.jsonData}
           editMode
           formComponent={VMFormWrapper}
+          validate={r => !!(r?.metadata?.name && r?.metadata?.namespace)}
         />
       )}
     </>
